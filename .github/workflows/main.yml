@@ -1,5 +1,6 @@
 on:
-    release
+    release:
+    workflow_run:
 jobs:
     release:
         runs-on: ubuntu-latest
