@@ -12,9 +12,15 @@
 [package]
 edition = "2021"
 name = "orgora"
-version = "0.1.1"
+version = "0.1.2"
 description = "org mode parser for rust (and python)"
 license = "MIT"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+extism-pdk = "1.2.1"
 
 [dependencies.pest]
 version = "2.7.13"

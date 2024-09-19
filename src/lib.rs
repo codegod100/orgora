@@ -5,28 +5,25 @@ use urlencoding::encode;
 #[derive(Parser)]
 #[grammar = "grammar.pest"] // relative to project `src`
 struct OrgParser;
+use extism_pdk::*;
 
-pub fn parse(str: &str) -> Result<pest::iterators::Pair<Rule>, Error<Rule>> {
-    let mut pairs = match OrgParser::parse(Rule::input, str) {
+pub fn parse_line(line: &str) -> Result<pest::iterators::Pair<Rule>, Error<Rule>> {
+    let mut pairs = match OrgParser::parse(Rule::input, line) {
         Ok(pairs) => pairs,
         Err(e) => return Err(e),
     };
 
     let pair = pairs.next().unwrap();
-    // println!("{:#?}", pair)
     Ok(pair)
 }
 
 pub fn html(pair: Pair<Rule>) -> String {
     let inner = pair.into_inner().flatten();
-    // println!("{:#?}", pair);
-    // println!("{:#?}", inner);
     let mut text = "".to_string();
     let mut replace = "".to_string();
     let mut target = "".to_string();
     let mut display = "".to_string();
     for pair in inner {
-        // let mut tag = "";
         match pair.as_rule() {
             Rule::text => text.push_str(pair.as_str()),
             Rule::normal_link | Rule::weird_link | Rule::hashtag => {
@@ -55,16 +52,14 @@ pub fn html(pair: Pair<Rule>) -> String {
     out
 }
 
-pub fn parse_file(content: String) -> String {
+pub fn parse(content: String) -> String {
     let lines = content.lines();
     let mut level = 0;
     let mut output = "<ul>".to_string();
     for line in lines {
-        // println!("Line: {:#?}", line);
-        let pair = match parse(line) {
+        let pair = match parse_line(line) {
             Ok(pair) => pair,
             Err(_e) => {
-                // println!("{:#?}", e);
                 continue;
             }
         };
@@ -78,7 +73,6 @@ pub fn parse_file(content: String) -> String {
                 }
                 output.push_str("<li>");
                 let out = html(pair);
-                // println!("{}", out);
                 output.push_str(&out);
                 level = 1;
             }
@@ -94,7 +88,6 @@ pub fn parse_file(content: String) -> String {
                 }
                 output.push_str("<li>");
                 let out = html(pair);
-                // println!("{}", out);
                 output.push_str(&out);
                 level = 2;
             }
@@ -107,7 +100,6 @@ pub fn parse_file(content: String) -> String {
                 }
                 output.push_str("<li>");
                 let out = html(pair);
-                // println!("{}", out);
                 output.push_str(&out);
                 level = 3;
             }
@@ -116,6 +108,12 @@ pub fn parse_file(content: String) -> String {
     }
     output.push_str("\n</li></ul>");
     output
+}
+
+
+#[plugin_fn]
+pub fn parse_with_wasm(content: String) -> FnResult<String>{
+    Ok(parse(content))
 }
 
 #[cfg(test)]
@@ -127,8 +125,8 @@ mod tests {
     fn test_parse_file() {
         let content = fs::read_to_string("fixtures/sample1.org").unwrap();
         let html = fs::read_to_string("fixtures/sample1.html").unwrap();
-        let result = crate::parse_file(content);
-        // println!("{}", result);
+        let result = crate::parse(content.clone());
+        // println!("{result}");
         assert_eq!(result, html);
     }
 }
