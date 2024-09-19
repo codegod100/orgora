@@ -13,5 +13,4 @@ jobs:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             with:
                 RUSTTARGET: "wasm32-wasi"
-                EXTRA_FILES: "target/wasm32-wasi/debug/orgora.wasm"
           
