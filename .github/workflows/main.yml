@@ -7,18 +7,13 @@ jobs:
         permissions: write-all
         steps:
         -   uses: actions/checkout@v2
-        -   name: Compile and release
-            uses: rust-build/rust-build.action@v1.4.5
-            id: compile
-            env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        -   uses: actions-rs/toolchain@v1
             with:
-                RUSTTARGET: "wasm32-wasi"
-                UPLOAD_MODE: none
-        -   name: Upload artifact
-            uses: actions/upload-artifact@v3
+                toolchain: stable
+        -   uses: actions-rs/cargo@v1
             with:
-                name: Binary
-                path: |
-                    ${{ steps.compile.outputs.BUILT_ARCHIVE }}
-                    ${{ steps.compile.outputs.BUILT_CHECKSUM }}
+                command: build
+                args: --target wasm32-unknown-unknown
+        -   uses: softprops/action-gh-release@v2
+            with: 
+                files: target/wasm32-unknown-unknown/debug/orgora.wasm
