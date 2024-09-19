@@ -1,0 +1,18 @@
+// WHITESPACE  = _{ " " }
+parens         = _{ "(" | ")" }
+select_punc    = _{ ":" | "'" | "\"" | "," | "/" | "." | "-" | parens | "&" | "=" | "%" | "?" | "_" | "+" | " " }
+words          = _{ ASCII_ALPHANUMERIC+ | select_punc+ }
+target         =  { words+ }
+normal_link    =  { "[[" ~ target ~ "]]" }
+display        =  { words+ }
+weird_link     =  { "[[" ~ target ~ "][" ~ display ~ "]]" }
+link           = _{ weird_link | normal_link }
+hashtag_target =  { ASCII_ALPHANUMERIC+ }
+hashtag        =  { "#" ~ hashtag_target }
+text           =  { link+ | hashtag+ | words+ }
+l1             =  { "*" ~ text+ }
+l2             =  { "**" ~ text+ }
+l3             =  { "***" ~ text+ }
+l4             =  { "****" ~ text+ }
+line           = _{ l1 | l2 | l3 | l4 }
+input          = _{ SOI ~ line+ ~ EOI }

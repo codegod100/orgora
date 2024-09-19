@@ -1,0 +1,14 @@
+* Three tiers of social power
+* Twitter model
+** one website, one corporation
+* Fediverse model
+** many websites, many communities, all talking
+** mastodon
+** peertube
+** etc...
+* User model
+** there are just people connecting with other people without any inherent "community" aspect
+*** the downside to this model is that in order to have community one somewhat artificially synthesize a community model since the other models come with a community aspect out of the box
+*** I believe that sites like github arose out of this inherent lack of community in the user model
+** git
+** blockchain

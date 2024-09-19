@@ -1,0 +1,13 @@
+* testing [[windows terminal is open source]] things
+* [[the find program is recursive by default]]
+* [[I think I'm going to start using hashtags for single word links]]
+* [[windows nightlight saves my eyes]]
+* Thinking about adding an #InterestingLinks section to my journals
+** [[https://www.toml-lint.com/][TOML Lint - The TOML Validator (toml-lint.com)]]
+* [[microsoft edge paste settings]]
+* [[rust is solarpunk]]
+* [[Obelism is the practice of annotating manuscripts with marks set in the margins]]
+* [[cleaning the garden]]
+* #InterestingImages
+** [[https://www.bing.com/images/search?view=detailV2&ccid=o9Bsfc5j&id=0455F7459C48257B1E4A20C9CA58AA72FF9391E6&thid=OIP.o9Bsfc5jW1g9O3BUDFpS1AHaE8&mediaurl=https%3a%2f%2forig00.deviantart.net%2f954c%2ff%2f2016%2f076%2fd%2f1%2fthe_lord_buddha_in_heaven_by_sujithshalitha-d9viey9.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.a3d06c7dce635b583d3b70540c5a52d4%3frik%3d5pGT%252f3KqWMrJIA%26pid%3dImgRaw%26r%3d0&exph=720&expw=1080&q=Heaven+in+Buddhism&simid=607989274481928156&FORM=IRPRST&ck=643018F2CEF9D1359047559B4089706A&selectedIndex=2&ajaxhist=0&ajaxserp=0][Heaven in Buddhism - Bing]]
+**
