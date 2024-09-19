@@ -2,6 +2,7 @@ on:
     release:
     workflow_run:
         types: [requested]
+        workflows: [release]
 jobs:
     release:
         runs-on: ubuntu-latest
