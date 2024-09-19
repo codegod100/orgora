@@ -1,8 +1,6 @@
 on:
     release:
-    workflow_run:
-        types: [requested]
-        workflows: [release]
+    workflow_dispatch:
 jobs:
     release:
         runs-on: ubuntu-latest
