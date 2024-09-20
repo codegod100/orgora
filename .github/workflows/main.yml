@@ -14,7 +14,7 @@ jobs:
         -   uses: actions-rs/cargo@v1
             with:
                 command: build
-                args: --target wasm32-unknown-unknown
+                args: --target wasm32-unknown-unknown --release
         -   uses: softprops/action-gh-release@v2
             with: 
                 files: target/wasm32-unknown-unknown/debug/orgora.wasm
