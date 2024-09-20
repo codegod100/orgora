@@ -17,4 +17,4 @@ jobs:
                 args: --target wasm32-unknown-unknown --release
         -   uses: softprops/action-gh-release@v2
             with: 
-                files: target/wasm32-unknown-unknown/debug/orgora.wasm
+                files: target/wasm32-unknown-unknown/release/orgora.wasm
